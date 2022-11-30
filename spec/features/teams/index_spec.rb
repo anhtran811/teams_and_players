@@ -13,10 +13,10 @@ RSpec.describe 'Team Index' do
           team_2 = Team.create!(name: 'Canada', rank: 40, qualified: true)
 
           visit '/teams'
+          expect(current_path).to eq('/teams')
+
           expect(page).to have_content(team_1.name)
           expect(page).to have_content(team_2.name)
-
-          expect(current_path).to eq("/teams")
       end
     end
   end
