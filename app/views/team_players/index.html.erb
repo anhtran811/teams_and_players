@@ -1,0 +1,8 @@
+<h1><%= @team.name %></h1>
+
+<% @players.each do |player| %>
+  <p><b>Name: </b><%= player.name %></p>
+  <p><b>Age: </b><%= player.age %></p>
+  <p><i>Age eligble for World Cup? </i><%= player.old_enough %></p>
+  <br>
+<% end %>
