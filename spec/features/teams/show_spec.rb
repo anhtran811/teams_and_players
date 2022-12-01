@@ -14,7 +14,7 @@ RSpec.describe 'Team Show' do
       expect(current_path).to eq("/teams/#{team.id}")
     end
     
-    it 'can display the parent with the id including the parents attributes' do
+    it 'can display the team with the id including the teams attributes' do
       team= Team.create!(name: 'Spain', rank: 7, qualified: true)
     
       visit "/teams/#{team.id}"
