@@ -9,7 +9,8 @@ RSpec.describe 'Player Index' do
   describe 'As a visitor' do
     describe 'When I visit /player_table_name' do
       it 'I can see the players attributes' do
-        player = Player.create!(name: 'Koke', age: 30, old_enough: true)
+        team = Team.create!(name: 'Spain', rank: 7, qualified: true)
+        player = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
 
         visit '/player_table_name'
 

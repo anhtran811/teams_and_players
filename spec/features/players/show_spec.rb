@@ -8,8 +8,9 @@ require 'rails_helper'
 RSpec.describe 'Player Show' do
   describe 'As a visitor' do
     it 'can visit a specific players show page /player_table_name/:id' do
-      player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true)
-      player_2 = Player.create!(name: 'Gavi', age: 18, old_enough: false)
+      team = Team.create!(name: 'Spain', rank: 7, qualified: true)
+      player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
+      player_2 = Player.create!(name: 'Gavi', age: 18, old_enough: false, team_id: team.id)
       
       visit "/player_table_name/#{player_1.id}"
 
@@ -21,8 +22,9 @@ RSpec.describe 'Player Show' do
     end
 
     it 'can display the player with the id including the players attributes' do
-      player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true)
-      player_2 = Player.create!(name: 'Gavi', age: 18, old_enough: false)
+      team = Team.create!(name: 'Spain', rank: 7, qualified: true)
+      player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
+      player_2 = Player.create!(name: 'Gavi', age: 18, old_enough: false, team_id: team.id)
 
       visit "/player_table_name/#{player_1.id}"
       

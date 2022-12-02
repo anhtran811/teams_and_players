@@ -24,5 +24,15 @@ RSpec.describe 'Team Show' do
       expect(page).to have_content(true)
     end
 
+    it 'can see the number of players associated with this team' do
+      team = Team.create!(name: 'Spain', rank: 7, qualified: true)
+      koke = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
+      gavi = Player.create!(name: 'Gavi', age: 18, old_enough: false, team_id: team.id)
+
+      visit "/teams/#{team.id}"
+
+      expect(page).to have_content('Total Roster')
+      expect(page).to have_content("#{team.player_count}")
+    end
   end
 end

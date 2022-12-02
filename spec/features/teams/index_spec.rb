@@ -24,7 +24,7 @@ RSpec.describe 'Team Index' do
 # I see that records are ordered by most recently created first
 # And next to each of the records I see when it was created
 
-        it 'I can see that teams are ordered by most recently created first, along with the date of creation' do
+        it 'can see that teams are ordered by most recently created first, along with the date of creation' do
           team_1 = Team.create!(name: 'Spain', rank: 7, qualified: true)
           team_2 = Team.create!(name: 'Canada', rank: 40, qualified: true)
           team_3 = Team.create!(name: 'England', rank: 5, qualified: true)
