@@ -23,8 +23,8 @@ RSpec.describe 'Player Show' do
 
     it 'can display the player with the id including the players attributes' do
       team = Team.create!(name: 'Spain', rank: 7, qualified: true)
-      player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
-      player_2 = Player.create!(name: 'Gavi', age: 18, old_enough: false, team_id: team.id)
+      player_1 = team.players.create!(name: 'Koke', age: 30, old_enough: true)
+      player_2 = team.players.create!(name: 'Gavi', age: 18, old_enough: false)
 
       visit "/player_table_name/#{player_1.id}"
       
