@@ -7,3 +7,5 @@
   <p><i> Qualified for World Cup? </i> <%= @team.qualified %> </p>
   <p><b>Total Roster: </b><%= @team.player_count %></b>
 </p>
+
+<%= link_to 'Update Team', "/teams/#{@team.id}/edit" %>

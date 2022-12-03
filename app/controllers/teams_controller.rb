@@ -21,7 +21,12 @@ class TeamsController < ApplicationController
     redirect_to "/teams"
   end
 
+  def edit
+    
+  end
+
   def team_params
     params.permit(:name, :rank, :qualified)
   end
+
 end
