@@ -50,7 +50,22 @@ RSpec.describe 'Player Show' do
       visit "/player_table_name/#{player_1.id}"
 
       click_link('Player Index')
+
       expect(current_path).to eq('/player_table_name')
+    end
+
+# As a visitor
+# When I visit any page on the site
+# Then I see a link at the top of the page that takes me to the Parent Index
+    it 'I can see a link at the top of the page that takes me to the teams index' do
+      team = Team.create!(name: 'Spain', rank: 7, qualified: true)
+      player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
+    
+      visit "/player_table_name/#{player_1.id}"
+
+      click_link('Team Index')
+
+      expect(current_path).to eq('/teams')
     end
   end
 end
