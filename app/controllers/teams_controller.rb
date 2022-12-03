@@ -12,7 +12,16 @@ class TeamsController < ApplicationController
   end
 
   def create
-    team = Team.create(name: params[:name])
+    tea, = Team.create(team_params)
+    # team = Team.create(
+    #   name: params[:name],
+    #   rank: params[:rank],
+    #   qualified: params[:qualified]
+    # )
     redirect_to "/teams"
+  end
+
+  def team_params
+    params.permit(:name, :rank, :qualified)
   end
 end

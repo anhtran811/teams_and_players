@@ -32,8 +32,7 @@ RSpec.describe 'Team creation' do
         fill_in('Qualified', with: 'true')
         
         click_button('Create Team')
-
-        new_team_id = Team.last.id
+        
         expect(current_path).to eq('/teams')
         expect(page).to have_content('Spain')
       end
