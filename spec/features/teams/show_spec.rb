@@ -55,7 +55,7 @@ RSpec.describe 'Team Show' do
 
       visit "/teams/#{team.id}"
 
-      click_link('Team Index')
+      click_link('Teams Index')
 
       expect(current_path).to eq('/teams')
     end

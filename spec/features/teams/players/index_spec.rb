@@ -55,7 +55,7 @@ RSpec.describe 'Teams Players Index' do
 
       visit '/player_table_name'
 
-      click_link('Team Index')
+      click_link('Teams Index')
 
       expect(current_path).to eq('/teams')
     end

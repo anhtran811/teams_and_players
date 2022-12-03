@@ -63,7 +63,7 @@ RSpec.describe 'Player Show' do
     
       visit "/player_table_name/#{player_1.id}"
 
-      click_link('Team Index')
+      click_link('Teams Index')
 
       expect(current_path).to eq('/teams')
     end
