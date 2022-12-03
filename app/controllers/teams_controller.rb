@@ -9,6 +9,10 @@ class TeamsController < ApplicationController
   end
 
   def new
+  end
 
+  def create
+    team = Team.create(name: params[:name])
+    redirect_to "/teams"
   end
 end
