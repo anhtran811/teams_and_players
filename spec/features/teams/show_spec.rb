@@ -9,6 +9,7 @@ RSpec.describe 'Team Show' do
   describe 'As a visitor' do
     it 'can visit a specific teams show page /teams/:id, ' do
       team = Team.create!(name: 'Spain', rank: 7, qualified: true)
+
       visit "/teams/#{team.id}"
       
       expect(current_path).to eq("/teams/#{team.id}")
@@ -33,6 +34,45 @@ RSpec.describe 'Team Show' do
 
       expect(page).to have_content('Total Roster')
       expect(page).to have_content("#{team.player_count}")
+    end
+
+    it 'I can see a link at the top of the page that takes me to the player index' do
+      team = Team.create!(name: 'Spain', rank: 7, qualified: true)
+      player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
+
+      visit "/teams/#{team.id}"
+
+      click_link('Player Index')
+
+      expect(current_path).to eq('/player_table_name')
+    end
+
+# As a visitor
+# When I visit any page on the site
+# Then I see a link at the top of the page that takes me to the Parent Index
+    it 'I can see a link at the top of the page that takes me to the teams index' do
+      team = Team.create!(name: 'Spain', rank: 7, qualified: true)
+      player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
+
+      visit "/teams/#{team.id}"
+
+      click_link('Teams Index')
+
+      expect(current_path).to eq('/teams')
+    end
+
+# As a visitor
+# When I visit a parent show page ('/parents/:id')
+# Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
+    it 'I can see a link that takes me to the teams player_table_name show page' do
+      team = Team.create!(name: 'Spain', rank: 7, qualified: true)
+      koke = team.players.create!(name: 'Koke', age: 30, old_enough: true)
+
+      visit "/teams/#{team.id}"
+
+      click_link('Team Roster')
+
+      expect(current_path).to eq("/teams/#{team.id}/player_table_name")
     end
   end
 end

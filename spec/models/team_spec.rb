@@ -21,11 +21,16 @@ RSpec.describe Team, type: :model do
     describe '#player_count' do
       it 'can count the number of players associated with the parent' do
         team_1 = Team.create!(name: 'Spain', rank: 7, qualified: true)
-        koke = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team_1.id)
-        gavi = Player.create!(name: 'Gavi', age: 18, old_enough: false, team_id: team_1.id)
-        torres = Player.create!(name: 'Torres', age: 25, old_enough: true, team_id: team_1.id)
-
+        koke = team_1.players.create!(name: 'Koke', age: 30, old_enough: true)
+        gavi = team_1.players.create!(name: 'Gavi', age: 18, old_enough: false)
+        torres = team_1.players.create!(name: 'Torres', age: 25, old_enough: true)
+        
+        team_2 = Team.create!(name: 'England', rank: 5, qualified: true)
+        kane = team_2.players.create!(name: 'Kane', age: 29, old_enough: true)
+        foden = team_2.players.create!(name: 'Foden', age: 21, old_enough: false)
+        
         expect(team_1.player_count).to eq(3)
+        expect(team_2.player_count).to eq(2)
       end
     end
   end
