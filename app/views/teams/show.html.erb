@@ -8,4 +8,4 @@
   <p><b>Total Roster: </b><%= @team.player_count %></b>
 </p>
 
-<%= link_to 'Update Team', "/teams/#{@team.id}/edit" %>
+<%= link_to "Edit Team: #{@team.name}", "/teams/#{@team.id}/edit" %>

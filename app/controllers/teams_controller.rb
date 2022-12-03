@@ -12,7 +12,7 @@ class TeamsController < ApplicationController
   end
 
   def create
-    tea, = Team.create(team_params)
+    team = Team.create(team_params)
     # team = Team.create(
     #   name: params[:name],
     #   rank: params[:rank],
@@ -22,7 +22,13 @@ class TeamsController < ApplicationController
   end
 
   def edit
-    
+    @team = Team.find(params[:id])
+  end
+
+  def update
+    team = Team.find(params[:id])
+    team.update(team_params)
+    redirect_to "/teams/#{team.id}"
   end
 
   def team_params
