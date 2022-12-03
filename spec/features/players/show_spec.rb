@@ -38,6 +38,19 @@ RSpec.describe 'Player Show' do
       expect(page).to have_content(18)
       expect(page).to have_content(false)
     end
+
+# As a visitor
+# When I visit any page on the site
+# Then I see a link at the top of the page that takes me to the Child Index
     
+    it 'I can see a link at the top of the page that takes me to the player index' do
+      team = Team.create!(name: 'Spain', rank: 7, qualified: true)
+      player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
+     
+      visit "/player_table_name/#{player_1.id}"
+
+      click_link('Player Index')
+      expect(current_path).to eq('/player_table_name')
+    end
   end
 end

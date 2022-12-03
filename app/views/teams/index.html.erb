@@ -1,4 +1,6 @@
+<%= link_to 'Player Index', '/player_table_name'%>
+
 <h1>Teams</h1>
 <% @teams.each do |team| %>
-<p><%= team.name %> -- Created_at: <%= team.created_at %></p>
+  <p><%= team.name %> -- Created_at: <%= team.created_at %></p>
 <% end %>

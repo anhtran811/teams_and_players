@@ -34,5 +34,15 @@ RSpec.describe 'Team Show' do
       expect(page).to have_content('Total Roster')
       expect(page).to have_content("#{team.player_count}")
     end
+
+    it 'I can see a link at the top of the page that takes me to the player index' do
+      team = Team.create!(name: 'Spain', rank: 7, qualified: true)
+      player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
+
+      visit "/teams/#{team.id}"
+
+      click_link('Player Index')
+      expect(current_path).to eq('/player_table_name')
+    end
   end
 end
