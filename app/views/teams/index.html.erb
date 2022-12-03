@@ -2,3 +2,5 @@
 <% @teams.each do |team| %>
   <p><%= team.name %> -- Created_at: <%= team.created_at %></p>
 <% end %>
+
+<%= link_to 'New Team', '/teams/new'%>

@@ -19,7 +19,6 @@ RSpec.describe 'Team Index' do
           expect(page).to have_content(team_2.name)
       end
 
-# As a visitor
 # When I visit the parent index,
 # I see that records are ordered by most recently created first
 # And next to each of the records I see when it was created
@@ -40,7 +39,7 @@ RSpec.describe 'Team Index' do
 
       it 'I can see a link at the top of the page that takes me to the player index' do
         team = Team.create!(name: 'Spain', rank: 7, qualified: true)
-        player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
+        player_1 = team.players.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
   
         visit '/teams'
   
@@ -49,19 +48,39 @@ RSpec.describe 'Team Index' do
         expect(current_path).to eq('/player_table_name')
       end
 
-# As a visitor
 # When I visit any page on the site
 # Then I see a link at the top of the page that takes me to the Parent Index
       it 'I can see a link at the top of the page that takes me to the teams index' do
         team = Team.create!(name: 'Spain', rank: 7, qualified: true)
-        player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
+        player_1 = team.players.create!(name: 'Koke', age: 30, old_enough: true)
 
-        visit "/teams"
+        visit '/teams'
 
         click_link('Teams Index')
 
         expect(current_path).to eq('/teams')
       end
+
+# When I visit the Parent Index page
+# Then I see a link to create a new Parent record, "New Parent"
+# When I click this link
+# Then I am taken to '/parents/new' where I  see a form for a new parent record
+# When I fill out the form with a new parent's attributes:
+# And I click the button "Create Parent" to submit the form
+# Then a `POST` request is sent to the '/parents' route,
+# a new parent record is created,
+# and I am redirected to the Parent Index page where I see the new Parent displayed    
+      it "can see a link 'New team' to create a new Team record" do
+        team = Team.create!(name: 'Spain', rank: 7, qualified: true)
+        player_1 = team.players.create!(name: 'Koke', age: 30, old_enough: true)
+
+        visit '/teams'
+
+        click_link('New Team')
+
+        expect(current_path).to eq('/teams/new')
+      end
+
     end
   end
 end
