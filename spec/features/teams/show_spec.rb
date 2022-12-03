@@ -9,6 +9,7 @@ RSpec.describe 'Team Show' do
   describe 'As a visitor' do
     it 'can visit a specific teams show page /teams/:id, ' do
       team = Team.create!(name: 'Spain', rank: 7, qualified: true)
+
       visit "/teams/#{team.id}"
       
       expect(current_path).to eq("/teams/#{team.id}")
