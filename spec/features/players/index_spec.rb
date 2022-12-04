@@ -68,7 +68,6 @@ RSpec.describe 'Player Index' do
         expect(page).to have_content(torres.age)
         expect(page).to have_content(torres.old_enough)
       end
-
     end
   end
 end

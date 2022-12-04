@@ -1,7 +1,6 @@
 class PlayersController < ApplicationController
   def index
-    @players = Player.all.where(old_enough: :true)
-    # require 'pry'; binding.pry
+    @players = Player.only_true
   end
 
   def show

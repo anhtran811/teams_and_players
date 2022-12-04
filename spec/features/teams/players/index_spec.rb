@@ -76,5 +76,15 @@ RSpec.describe 'Teams Players Index' do
 
       expect(current_path).to eq("/teams/#{team.id}/players")
     end
+
+    it 'can see the players listed alphabetically' do
+      team = Team.create!(name: 'Spain', rank: 7, qualified: true)
+      koke = team.players.create!(name: 'Koke', age: 30, old_enough: true)
+      gave = team.players.create!(name: 'Gavi', age: 18, old_enough: false)
+      torres = team.players.create!(name: 'Torres', age: 35, old_enough: true)
+
+      visit "/teams/#{team.id}/players"
+
+    end
   end
 end
