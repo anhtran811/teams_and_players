@@ -59,5 +59,26 @@ RSpec.describe 'Teams Players Index' do
 
       expect(current_path).to eq('/teams')
     end
+
+# As a visitor
+# When I visit the Parent's children Index Page
+# Then I see a link to sort children in alphabetical order
+# When I click on the link
+# I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
+    it 'can have a link that returns players alphabetically' do
+      team = Team.create!(name: 'Spain', rank: 7, qualified: true)
+      koke = team.players.create!(name: 'Koke', age: 30, old_enough: true)
+      gave = team.players.create!(name: 'Gavi', age: 18, old_enough: false)
+      torres = team.players.create!(name: 'Torres', age: 35, old_enough: true)
+
+      visit "/teams/#{team.id}/players"
+      click_link ("#{team.name} players listed alphabetically")
+
+      expect(current_path).to eq("/teams/#{team.id}/players")
+      expect(page).to have_content('Koke')
+      expect(page).to have_content('Gavi')
+      expect(page).to have_content('Torres')
+      expect(page).to_not have_content('Pique')
+    end
   end
 end
