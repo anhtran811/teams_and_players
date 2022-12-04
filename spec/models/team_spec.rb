@@ -33,5 +33,16 @@ RSpec.describe Team, type: :model do
         expect(team_2.player_count).to eq(2)
       end
     end
+    
+    describe "#alphabetical" do
+      it 'can list the player names alphabetically' do
+        team = Team.create!(name: 'Spain', rank: 7, qualified: true)
+        koke = team.players.create!(name: 'Koke', age: 30, old_enough: true)
+        torres = team.players.create!(name: 'Torres', age: 25, old_enough: true)
+        gavi = team.players.create!(name: 'Gavi', age: 18, old_enough: false)
+
+        expect(team.alphabetical).to eq([gavi, koke, torres])
+      end
+    end
   end
 end 

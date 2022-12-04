@@ -2,11 +2,14 @@ class Team < ApplicationRecord
   has_many :players, dependent: :destroy
 
   def self.ordered
-    self.all.order('created_at desc')
-    #self is Team
+    all.order('created_at desc')
   end
 
   def player_count
     players.count
+  end
+
+  def alphabetical
+    players.order(:name)
   end
 end
