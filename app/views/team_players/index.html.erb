@@ -6,3 +6,5 @@
   <p><i>Age eligble for World Cup? </i><%= player.old_enough %></p>
   <br>
 <% end %>
+
+<%= link_to "Create Player for #{@team.name}", "/teams/#{@team.id}/player_table_name/new" %>

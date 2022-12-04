@@ -9,8 +9,8 @@ RSpec.describe 'Teams Players Index' do
   describe 'As a visitor' do
     it 'can visit /teams/:team_id/player_table_name' do
       spain = Team.create!(name: 'Spain', rank: 7, qualified: true)
-      spain.players.create!(name: 'Gavi', age: 18, old_enough: false)
-
+      gavi = spain.players.create!(name: 'Gavi', age: 18, old_enough: false)
+    
       visit "/teams/#{spain.id}/player_table_name"
 
       expect(current_path).to eq("/teams/#{spain.id}/player_table_name")
