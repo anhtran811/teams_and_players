@@ -8,3 +8,5 @@
 <% end %>
 
 <%= link_to "Create Player for #{@team.name}", "/teams/#{@team.id}/players/new" %>
+
+<%= link_to "#{@team.name} players listed alphabetically", "/teams/#{@team.id}/players" %>
