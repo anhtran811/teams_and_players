@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Team.destroy_all
-Player.destroy_all
+# Team.destroy_all
+# Player.destroy_all
 
 spain = Team.create!(name: 'Spain', rank: 7, qualified: true)
 england = Team.create!(name: 'England', rank: 5, qualified: true)

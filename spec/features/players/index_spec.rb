@@ -7,12 +7,12 @@ require 'rails_helper'
 
 RSpec.describe 'Player Index' do
   describe 'As a visitor' do
-    describe 'When I visit /player_table_name' do
+    describe 'When I visit /players' do
       it 'I can see the players attributes' do
         team = Team.create!(name: 'Spain', rank: 7, qualified: true)
         player = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
 
-        visit '/player_table_name'
+        visit '/players'
 
         expect(page).to have_content('Koke')
         expect(page).to have_content(30)
@@ -26,11 +26,11 @@ RSpec.describe 'Player Index' do
         team = Team.create!(name: 'Spain', rank: 7, qualified: true)
         player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
       
-        visit '/player_table_name'
+        visit '/players'
 
         click_link('Player Index')
 
-        expect(current_path).to eq('/player_table_name')
+        expect(current_path).to eq('/players')
       end
 
 # As a visitor
@@ -40,7 +40,7 @@ RSpec.describe 'Player Index' do
         team = Team.create!(name: 'Spain', rank: 7, qualified: true)
         player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
       
-        visit '/player_table_name'
+        visit '/players'
 
         click_link('Teams Index')
 

@@ -7,13 +7,13 @@ require 'rails_helper'
 
 RSpec.describe 'Teams Players Index' do
   describe 'As a visitor' do
-    it 'can visit /teams/:team_id/player_table_name' do
+    it 'can visit /teams/:team_id/players' do
       spain = Team.create!(name: 'Spain', rank: 7, qualified: true)
-      spain.players.create!(name: 'Gavi', age: 18, old_enough: false)
+      gavi = spain.players.create!(name: 'Gavi', age: 18, old_enough: false)
+    
+      visit "/teams/#{spain.id}/players"
 
-      visit "/teams/#{spain.id}/player_table_name"
-
-      expect(current_path).to eq("/teams/#{spain.id}/player_table_name")
+      expect(current_path).to eq("/teams/#{spain.id}/players")
     end
     
     it 'can see each Player that is associated with that Team and each Players attributes' do
@@ -21,7 +21,7 @@ RSpec.describe 'Teams Players Index' do
       gavi = spain.players.create!(name: 'Gavi', age: 18, old_enough: false)
       torres = spain.players.create!(name: 'Torres', age: 25, old_enough: true)
 
-      visit "/teams/#{spain.id}/player_table_name"
+      visit "/teams/#{spain.id}/players"
 
       expect(page).to have_content(spain.name)
       expect(page).to have_content(gavi.name)
@@ -39,11 +39,11 @@ RSpec.describe 'Teams Players Index' do
       team = Team.create!(name: 'Spain', rank: 7, qualified: true)
       player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
 
-      visit "/teams/#{team.id}/player_table_name"
+      visit "/teams/#{team.id}/players"
 
       click_link('Player Index')
 
-      expect(current_path).to eq('/player_table_name')
+      expect(current_path).to eq('/players')
     end
 
 # As a visitor
@@ -53,7 +53,7 @@ RSpec.describe 'Teams Players Index' do
       team = Team.create!(name: 'Spain', rank: 7, qualified: true)
       player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
 
-      visit '/player_table_name'
+      visit '/players'
 
       click_link('Teams Index')
 

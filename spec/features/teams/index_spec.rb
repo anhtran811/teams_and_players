@@ -19,7 +19,6 @@ RSpec.describe 'Team Index' do
           expect(page).to have_content(team_2.name)
       end
 
-# As a visitor
 # When I visit the parent index,
 # I see that records are ordered by most recently created first
 # And next to each of the records I see when it was created
@@ -40,23 +39,22 @@ RSpec.describe 'Team Index' do
 
       it 'I can see a link at the top of the page that takes me to the player index' do
         team = Team.create!(name: 'Spain', rank: 7, qualified: true)
-        player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
+        player_1 = team.players.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
   
         visit '/teams'
   
         click_link('Player Index')
 
-        expect(current_path).to eq('/player_table_name')
+        expect(current_path).to eq('/players')
       end
 
-# As a visitor
 # When I visit any page on the site
 # Then I see a link at the top of the page that takes me to the Parent Index
       it 'I can see a link at the top of the page that takes me to the teams index' do
         team = Team.create!(name: 'Spain', rank: 7, qualified: true)
-        player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
+        player_1 = team.players.create!(name: 'Koke', age: 30, old_enough: true)
 
-        visit "/teams"
+        visit '/teams'
 
         click_link('Teams Index')
 

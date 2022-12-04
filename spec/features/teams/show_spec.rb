@@ -44,7 +44,7 @@ RSpec.describe 'Team Show' do
 
       click_link('Player Index')
 
-      expect(current_path).to eq('/player_table_name')
+      expect(current_path).to eq('/players')
     end
 
 # As a visitor
@@ -64,7 +64,7 @@ RSpec.describe 'Team Show' do
 # As a visitor
 # When I visit a parent show page ('/parents/:id')
 # Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
-    it 'I can see a link that takes me to the teams player_table_name show page' do
+    it 'I can see a link that takes me to the teams players show page' do
       team = Team.create!(name: 'Spain', rank: 7, qualified: true)
       koke = team.players.create!(name: 'Koke', age: 30, old_enough: true)
 
@@ -72,7 +72,7 @@ RSpec.describe 'Team Show' do
 
       click_link('Team Roster')
 
-      expect(current_path).to eq("/teams/#{team.id}/player_table_name")
+      expect(current_path).to eq("/teams/#{team.id}/players")
     end
   end
 end
