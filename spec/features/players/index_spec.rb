@@ -46,6 +46,29 @@ RSpec.describe 'Player Index' do
 
         expect(current_path).to eq('/teams')
       end
+
+# As a visitor
+# When I visit the child index
+# Then I only see records where the boolean column is `true`
+      it 'I will only see the records where the boolean column is true' do
+        spain = Team.create!(name: 'Spain', rank: 7, qualified: true)
+        koke = spain.players.create!(name: 'Koke', age: 30, old_enough: true)
+        gavi = spain.players.create!(name: 'Gavi', age: 18, old_enough: false)
+        torres = spain.players.create!(name: 'Torres', age: 35, old_enough: true)
+
+        visit '/players'
+
+        expect(page).to have_content(koke.name)
+        expect(page).to have_content(koke.age)
+        expect(page).to have_content(koke.old_enough)
+        expect(page).to_not have_content(gavi.name)
+        expect(page).to_not have_content(gavi.age)
+        expect(page).to_not have_content(gavi.old_enough)
+        expect(page).to have_content(torres.name)
+        expect(page).to have_content(torres.age)
+        expect(page).to have_content(torres.old_enough)
+      end
+
     end
   end
 end
