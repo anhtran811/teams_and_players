@@ -18,18 +18,18 @@ RSpec.describe 'Player creation' do
         spain = Team.create!(name: 'Spain', rank: 7, qualified: true)
         gavi = spain.players.create!(name: 'Gavi', age: 18, old_enough: false)
   
-        visit "/teams/#{spain.id}/player_table_name"
+        visit "/teams/#{spain.id}/players"
 
         click_link("Create Player for #{spain.name}")
 
-        expect(current_path).to eq("/teams/#{spain.id}/player_table_name/new")
+        expect(current_path).to eq("/teams/#{spain.id}/players/new")
       end
 
       it 'can create a new player' do
         team = Team.create!(name: 'Spain', rank: 7, qualified: true)
         # pedri = spain.players.create!(name: 'Pedri', age: 26, old_enough: true)
 
-        visit "/teams/#{team.id}/player_table_name/new"
+        visit "/teams/#{team.id}/players/new"
 
         fill_in('Name', with: 'Pedri')
         fill_in('Age', with: '26')
@@ -37,7 +37,7 @@ RSpec.describe 'Player creation' do
        
         click_button('Create Player')
     
-        expect(current_path).to eq("/teams/#{team.id}/player_table_name")
+        expect(current_path).to eq("/teams/#{team.id}/players")
         expect(page).to have_content('Pedri')
         expect(page).to have_content('26')
         expect(page).to have_content('true')

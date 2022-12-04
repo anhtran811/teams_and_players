@@ -16,7 +16,7 @@ class TeamPlayersController < ApplicationController
     #   age: params[:age],
     #   old_enough: params[:old_enough])
 
-    redirect_to "/teams/#{player.team_id}/player_table_name"
+    redirect_to "/teams/#{player.team_id}/players"
   end
 
   def team_players_params
