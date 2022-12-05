@@ -16,7 +16,7 @@ RSpec.describe 'Destroying a team' do
       visit "/teams/#{team.id}"
       click_button "Delete: #{team.name}"
 
-      expect(current_path).to eq("/teams/#{team.id}")
+      expect(current_path).to eq("/teams")
       expect(page).to_not have_content('Portugal')
     end
   end
