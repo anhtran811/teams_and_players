@@ -1,6 +1,7 @@
 <h1>Teams</h1>
 <% @teams.each do |team| %>
-  <p><%= team.name %> -- Created_at: <%= team.created_at %></p>
+  <p><%= team.name %> -- Created_at: <%= team.created_at %>
+  <%= link_to "Edit #{team.name}", "/teams/#{team.id}/edit" %></p>
 <% end %>
 
 <%= link_to 'New Team', '/teams/new'%>

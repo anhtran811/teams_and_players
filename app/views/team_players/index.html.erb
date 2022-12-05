@@ -3,10 +3,10 @@
 <% @players.each do |player| %>
   <p><b>Name: </b><%= player.name %></p>
   <p><b>Age: </b><%= player.age %></p>
-  <p><i>Age eligble for World Cup? </i><%= player.old_enough %></p>
+  <p><i>Age eligble for World Cup? </i><%= player.old_enough %></p> <%= link_to "Edit: #{player.name}", "/players/#{player.id}/edit" %>
   <br>
 <% end %>
 
 <%= link_to "Create Player for #{@team.name}", "/teams/#{@team.id}/players/new" %>
 <br>
-<%= link_to "#{@team.name} players listed alphabetically", "/teams/#{@team.id}/players" %>
+<%= link_to "#{@team.name} players listed alphabetically", "/teams/#{@team.id}/players?sorted=true" %>
