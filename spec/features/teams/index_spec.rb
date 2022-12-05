@@ -67,15 +67,16 @@ RSpec.describe 'Team Index' do
 # When I click the link
 # I should be taken to that parent's edit page where I can update its information just like in User Story 12
       it 'can see a link next to every team to edit the team' do
-        visit '/teams'
         spain = Team.create!(name: 'Spain', rank: 7, qualified: true)
+        visit '/teams'
 
         click_link("Edit #{spain.name}")
-        expect(current_path).to be("/teams/#{spain.id}/edit")
+        expect(current_path).to eq("/teams/#{spain.id}/edit")
         
-        click_link("Edit #{england.name}")
         england = Team.create!(name: 'England', rank: 5, qualified: true)
-        expect(current_path).to be("/teams/#{england.id}/edit")
+        visit '/teams'
+        click_link("Edit #{england.name}")
+        expect(current_path).to eq("/teams/#{england.id}/edit")
       end
     end
   end
