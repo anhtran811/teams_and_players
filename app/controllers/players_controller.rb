@@ -15,11 +15,17 @@ class PlayersController < ApplicationController
     player = Player.find(params[:id])
     player.update(player_params)
     # (
-    #   name: params[:name],
-    #   age: params[:age],
-    #   old_enough: params[:old_enough]
-    # )
-    redirect_to "/players/#{player.id}"
+      #   name: params[:name],
+      #   age: params[:age],
+      #   old_enough: params[:old_enough]
+      # )
+      redirect_to "/players/#{player.id}"
+    end
+    
+  def destroy
+    player = Player.find(params[:id])
+    player.destroy
+    redirect_to '/players'
   end
 
   def player_params 
