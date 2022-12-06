@@ -12,4 +12,8 @@ class Team < ApplicationRecord
   def alphabetical
     players.order(:name)
   end
+
+  def min_age(age)
+    players.where("age >= #{age}")
+  end
 end
