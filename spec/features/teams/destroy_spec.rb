@@ -1,13 +1,5 @@
 require 'rails_helper'
 
-# As a visitor
-# When I visit a parent show page
-# Then I see a link to delete the parent
-# When I click the link "Delete Parent"
-# Then a 'DELETE' request is sent to '/parents/:id',
-# the parent is deleted, and all child records are deleted
-# and I am redirected to the parent index page where I no longer see this parent
-
 RSpec.describe 'Destroying a team' do
   describe 'When I visit a team show page' do
     it 'can delete the team' do
@@ -21,12 +13,6 @@ RSpec.describe 'Destroying a team' do
       expect(page).to_not have_content('Portugal')
     end
   end
-
-  # As a visitor
-  # When I visit the parent index page
-  # Next to every parent, I see a link to delete that parent
-  # When I click the link
-  # I am returned to the Parent Index Page where I no longer see that parent
 
   describe 'When I visit a team index page' do
     it 'can delete the team' do
