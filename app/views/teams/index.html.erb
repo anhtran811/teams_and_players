@@ -2,7 +2,6 @@
 <% @teams.each do |team| %>
   <p><%= team.name %> -- Created_at: <%= team.created_at %>
   <%= link_to "Edit #{team.name}", "/teams/#{team.id}/edit" %></p>
-  <%# <%= button_to "Delete: #{team.name}", "/teams/", method: :delete %>
   <%= button_to "Delete: #{team.name}", "/teams/#{team.id}", method: :delete %>
 <% end %>
 
