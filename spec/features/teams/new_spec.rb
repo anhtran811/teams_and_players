@@ -19,7 +19,7 @@ RSpec.describe 'Team creation' do
 
         visit '/teams'
 
-        click_link('New Team')
+        click_link('Create a new Team')
 
         expect(current_path).to eq('/teams/new')
       end
