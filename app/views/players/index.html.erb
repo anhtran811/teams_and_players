@@ -4,5 +4,6 @@
   <p><b> Name: </b> <%= player.name %></p>
   <p><b> Age: </b> <%= player.age %></p>
   <p><i> Age eligible for World Cup?</i> <%= player.old_enough %> <%= link_to "Edit: #{player.name}", "/players/#{player.id}/edit" %></p>
+  <%= button_to "Delete: #{player.name}", "/players/#{player.id}", method: :delete %>
   <br>
 <% end %>
