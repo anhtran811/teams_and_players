@@ -1,10 +1,5 @@
 require 'rails_helper'
 
-# As a visitor
-# When I visit '/child_table_name/:id'
-# Then I see the child with that id including the child's attributes
-# (data from each column that is on the child table)
-
 RSpec.describe 'Player Show' do
   describe 'As a visitor' do
     it 'can visit a specific players show page /players/:id' do

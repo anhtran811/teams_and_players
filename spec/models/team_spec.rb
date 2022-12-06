@@ -3,10 +3,6 @@ require 'rails_helper'
 RSpec.describe Team, type: :model do
   it {should have_many :players}
 
-# As a visitor
-# When I visit the parent index,
-# I see that records are ordered by most recently created first
-# And next to each of the records I see when it was created
   describe 'As a visitor' do
     describe '#ordered teams in index' do
       it 'can order the teams by most recently created' do

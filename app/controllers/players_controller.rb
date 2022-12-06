@@ -14,12 +14,7 @@ class PlayersController < ApplicationController
   def update
     player = Player.find(params[:id])
     player.update(player_params)
-    # (
-      #   name: params[:name],
-      #   age: params[:age],
-      #   old_enough: params[:old_enough]
-      # )
-      redirect_to "/players/#{player.id}"
+    redirect_to "/players/#{player.id}"
     end
     
   def destroy
@@ -31,5 +26,4 @@ class PlayersController < ApplicationController
   def player_params 
     params.permit(:name, :age, :old_enough)
   end
-
 end
