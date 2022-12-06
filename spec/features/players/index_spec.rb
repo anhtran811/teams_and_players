@@ -34,20 +34,6 @@ RSpec.describe 'Player Index' do
       end
 
 # As a visitor
-# When I visit any page on the site
-# Then I see a link at the top of the page that takes me to the Parent Index
-      it 'I can see a link at the top of the page that takes me to the teams index' do
-        team = Team.create!(name: 'Spain', rank: 7, qualified: true)
-        player_1 = Player.create!(name: 'Koke', age: 30, old_enough: true, team_id: team.id)
-      
-        visit '/players'
-
-        click_link('Teams Index')
-
-        expect(current_path).to eq('/teams')
-      end
-
-# As a visitor
 # When I visit the child index
 # Then I only see records where the boolean column is `true`
       it 'I will only see the records where the boolean column is true' do

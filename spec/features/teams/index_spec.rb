@@ -48,19 +48,6 @@ RSpec.describe 'Team Index' do
         expect(current_path).to eq('/players')
       end
 
-# When I visit any page on the site
-# Then I see a link at the top of the page that takes me to the Parent Index
-      it 'I can see a link at the top of the page that takes me to the teams index' do
-        team = Team.create!(name: 'Spain', rank: 7, qualified: true)
-        player_1 = team.players.create!(name: 'Koke', age: 30, old_enough: true)
-
-        visit '/teams'
-
-        click_link('Teams Index')
-
-        expect(current_path).to eq('/teams')
-      end
-
 # As a visitor
 # When I visit the parent index page
 # Next to every parent, I see a link to edit that parent's info
