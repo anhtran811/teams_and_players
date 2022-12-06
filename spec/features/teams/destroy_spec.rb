@@ -22,15 +22,21 @@ RSpec.describe 'Destroying a team' do
     end
   end
 
-  # describe 'When I visit a team index page' do
-  #   it 'can delete the team' do
-  #     team = Team.create!(name: 'Portugal', rank: 9, qualified: true)
+  # As a visitor
+  # When I visit the parent index page
+  # Next to every parent, I see a link to delete that parent
+  # When I click the link
+  # I am returned to the Parent Index Page where I no longer see that parent
 
-  #     visit '/teams'
-  #     click_button "Delete: #{team.name}"
+  describe 'When I visit a team index page' do
+    it 'can delete the team' do
+      team = Team.create!(name: 'Portugal', rank: 9, qualified: true)
 
-  #     expect(current_path).to eq('/teams')
-  #     expect(page).to_not have_content('Portugal')
-  #   end
-  # end
+      visit '/teams'
+      click_button "Delete: #{team.name}"
+
+      expect(current_path).to eq('/teams')
+      expect(page).to_not have_content('Portugal')
+    end
+  end
 end
