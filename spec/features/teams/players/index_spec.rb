@@ -115,12 +115,14 @@ RSpec.describe 'Teams Players Index' do
         gavi = spain.players.create!(name: 'Gavi', age: 18, old_enough: false)
 
         visit "/teams/#{spain.id}/players"
+        fill_in('Age', with: '30')
 
         click_on ("Sort by #{spain.name}'s minimum player age")
 
         expect(current_path).to eq("/teams/#{spain.id}/players")
         expect(page).to have_content(koke.name)
         expect(page).to have_content(torres.name)
+        expect(page).to_not have_content(gavi.name)
       end
   end
 end
