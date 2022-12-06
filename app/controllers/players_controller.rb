@@ -26,5 +26,4 @@ class PlayersController < ApplicationController
   def player_params 
     params.permit(:name, :age, :old_enough)
   end
-
 end
