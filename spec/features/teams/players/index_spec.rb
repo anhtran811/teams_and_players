@@ -102,5 +102,27 @@ RSpec.describe 'Teams Players Index' do
 
       expect(current_path).to eq("/players/#{torres.id}/edit")
     end
+
+# As a visitor
+# When I visit the Parent's children Index Page
+# I see a form that allows me to input a number value
+# When I input a number value and click the submit button that reads 'Only return records with more than `number` of `column_name`'
+# Then I am brought back to the current index page with only the records that meet that threshold shown.
+      it 'can see a form to input a minimum age' do
+        spain = Team.create!(name: 'Spain', rank: 7, qualified: true)
+        koke = spain.players.create!(name: 'Koke', age: 30, old_enough: true)
+        torres = spain.players.create!(name: 'Torres', age: 35, old_enough: true)
+        gavi = spain.players.create!(name: 'Gavi', age: 18, old_enough: false)
+
+        visit "/teams/#{spain.id}/players"
+        fill_in('age', with: '32')
+
+        click_on ("Sort #{spain.name} players by maximum age")
+
+        expect(current_path).to eq("/teams/#{spain.id}/players")
+        expect(page).to have_content(koke.name)
+        expect(page).to have_content(gavi.name)
+        expect(page).to_not have_content(torres.name)
+      end
   end
 end

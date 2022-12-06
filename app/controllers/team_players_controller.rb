@@ -3,6 +3,8 @@ class TeamPlayersController < ApplicationController
     @team = Team.find(params[:team_id])
     if params[:sorted]
       @players = @team.alphabetical
+    elsif params[:age]
+      @players = @team.max_age(params[:age])
     else
       @players = @team.players
     end
