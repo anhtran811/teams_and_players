@@ -13,7 +13,7 @@ class Team < ApplicationRecord
     players.order(:name)
   end
 
-  def min_age(age)
-    players.where("age >= #{age}")
+  def max_age(age)
+    players.where("age <= #{age}")
   end
 end
