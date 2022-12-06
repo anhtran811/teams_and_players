@@ -16,12 +16,6 @@ class TeamPlayersController < ApplicationController
 
   def create
     player = Player.create(team_players_params)
-    #   player = Player.create(
-    #   team_id: params[:team_id],
-    #   name: params[:name],
-    #   age: params[:age],
-    #   old_enough: params[:old_enough])
-
     redirect_to "/teams/#{player.team_id}/players"
   end
 

@@ -1,6 +1,5 @@
 class TeamsController < ApplicationController
   def index
-    # @teams = Team.all
     @teams = Team.ordered
   end
 
@@ -13,11 +12,6 @@ class TeamsController < ApplicationController
 
   def create
     team = Team.create(team_params)
-    # team = Team.create(
-    #   name: params[:name],
-    #   rank: params[:rank],
-    #   qualified: params[:qualified]
-    # )
     redirect_to "/teams"
   end
 
@@ -41,5 +35,4 @@ class TeamsController < ApplicationController
     def team_params
       params.permit(:name, :rank, :qualified)
     end
-
 end
