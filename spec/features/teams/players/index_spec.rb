@@ -116,7 +116,7 @@ RSpec.describe 'Teams Players Index' do
 
         visit "/teams/#{spain.id}/players"
 
-        click_on ("Only show #{spain.name} players over 21")
+        click_on ("Sort by #{spain.name}'s minimum player age")
 
         expect(current_path).to eq("/teams/#{spain.id}/players")
         expect(page).to have_content(koke.name)
