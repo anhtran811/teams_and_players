@@ -52,7 +52,7 @@ RSpec.describe Team, type: :model do
         torres = team.players.create!(name: 'Torres', age: 25, old_enough: true)
         gavi = team.players.create!(name: 'Gavi', age: 18, old_enough: false)
 
-        expect(team.min_age(21)).to eq([koke, torres])
+        expect(team.max_age(21)).to eq([gavi])
       end
     end
   end
